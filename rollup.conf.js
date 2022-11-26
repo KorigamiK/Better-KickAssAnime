@@ -2,6 +2,7 @@ const path = require('path');
 const { getRollupPlugins } = require('@gera2ld/plaid');
 const userscript = require('rollup-plugin-userscript');
 const pkg = require('./package.json');
+const replace = require('@rollup/plugin-replace');
 
 const DIST = 'dist';
 const FILENAME = 'index';
@@ -32,6 +33,10 @@ const rollupConfig = [
             .replace('process.env.VERSION', pkg.version)
             .replace('process.env.AUTHOR', pkg.author),
         ),
+        replace({
+          preventAssignment: true,
+          'process.browser': true,
+        }),
       ],
     },
     output: {

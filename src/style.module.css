@@ -1,5 +1,5 @@
 .title {
-  @apply font-bold;
+  @apply font-medium italic;
 }
 
 .desc {
@@ -11,5 +11,5 @@
 }
 
 .main {
-  @apply bg-fuchsia-800;
+  @apply bg-amber-500 text-center py-4;
 }

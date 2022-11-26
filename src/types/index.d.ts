@@ -1,5 +1,6 @@
 import * as dom from '@violentmonkey/dom';
 import * as ui from '@violentmonkey/ui';
+import { IKAA } from './kaa';
 
 declare global {
   const VM: typeof dom & typeof ui;
@@ -11,5 +12,15 @@ declare global {
      * - DomNode - when jsxFactory is VM.hm
      */
     type Element = import('@gera2ld/jsx-dom').VNode;
+  }
+
+  namespace globalThis {
+    const appData: IKAA;
+    const appUrl: string;
+    const apiUrl: string;
+    const uploadUrl: string;
+    const lowDetect: boolean;
+    const adblockTimedNav: number;
+    const sharingDm: string;
   }
 }
