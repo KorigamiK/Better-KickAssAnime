@@ -1,24 +1,20 @@
-// global CSS
-import globalCss from './style.css';
-// CSS modules
-import styles, { stylesheet } from './style.module.css';
+import globalCss from './style.css'; // global CSS
 
-function Greetings() {
+import styles, { stylesheet } from './style.module.css'; // CSS modules
+
+function Main() {
   return (
-    <>
+    <div className={styles.main}>
       <div className={styles.title}>hello</div>
       <p className={styles.desc}>This is a panel. You can drag to move it.</p>
-    </>
+    </div>
   );
 }
 
-// Let's create a movable panel using @violentmonkey/ui
-const panel = VM.getPanel({
-  content: <Greetings />,
-  theme: 'dark',
-  style: [globalCss, stylesheet].join('\n'),
-});
-panel.wrapper.style.top = '100px';
-panel.setMovable(true);
+const hostElement = VM.getHostElement();
+hostElement.addStyle([globalCss, stylesheet].join('\n'));
+hostElement.root.appendChild((<Main />) as unknown as Node);
 
-panel.show();
+document
+  .getElementById('main-nav')
+  .insertAdjacentElement('afterend', hostElement.host);

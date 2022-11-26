@@ -5,3 +5,11 @@
 .desc {
   @apply text-green-600;
 }
+
+.panel {
+  @apply bg-gray-200;
+}
+
+.main {
+  @apply bg-fuchsia-800;
+}
